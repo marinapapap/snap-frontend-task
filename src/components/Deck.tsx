@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NewCard from "./NewCard";
 import LastCard from "./LastCard";
 import SnapText from "./SnapText";
@@ -9,6 +9,7 @@ interface DeckProps {
 }
 
 const Deck: React.FC<DeckProps> = ({ deck }) => {
+  const [remaining, setRemaining] = useState<number>(52);
   const [value, setValue] = useState<string>("");
   const [suit, setSuit] = useState<string>("");
   const [image, setImage] = useState<string>("");
@@ -29,6 +30,10 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
         throw new Error("Failed to fetch image");
       }
       const data = await res.json();
+      setRemaining(data.remaining);
+      if (data.remaining === 0) {
+        return;
+      }
       setValue(data.cards[0].value);
       setSuit(data.cards[0].suit);
       setImage(data.cards[0].image);
@@ -49,8 +54,23 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
     }
   };
 
-  console.log(valueMatches);
-  console.log(suitMatches);
+  const checkEndGame = () => {
+    if (remaining === 0) {
+      return (
+        <div>
+          <h1>VALUE MATCHES: {valueMatches}</h1>
+          <h1>VALUE MATCHES: {suitMatches}</h1>
+        </div>
+      );
+    } else {
+      return (
+        <button data-testid="draw-button" onClick={handleSubmit}>
+          Draw Card
+        </button>
+      );
+    }
+  };
+
   return (
     <div>
       <SnapText
@@ -67,9 +87,7 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
         />
         <NewCard value={value} suit={suit} image={image} />
       </div>
-      <button data-testid="draw-button" onClick={handleSubmit}>
-        Draw Card
-      </button>
+      {checkEndGame()}
     </div>
   );
 };
