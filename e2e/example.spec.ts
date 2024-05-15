@@ -28,3 +28,11 @@ test("draw card button is displayed on homepage", async ({ page }) => {
   const button = await page.getByTestId("draw-button");
   await expect(button).toHaveText("Draw Card");
 });
+
+test("clicking the button will draw a card", async ({ page }) => {
+  await page.goto("/");
+
+  const button = await page.getByTestId("draw-button");
+  await button.click();
+  await page.isVisible("[data-testId='new-card']");
+});
