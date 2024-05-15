@@ -23,8 +23,8 @@ const SnapText: React.FC<SnapTextProps> = ({
       )}
 
       {suit && suit === lastSuit && (
-        <div data-testid="snap-value">
-          <h1>SNAP Suit!</h1>
+        <div data-testid="snap-suit">
+          <h1>SNAP SUIT!</h1>
         </div>
       )}
     </>
