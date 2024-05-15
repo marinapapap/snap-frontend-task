@@ -122,3 +122,47 @@ test("snap suit text will appear if there is a suit match", async ({
 
   await page.isVisible("[data-testid='snap-suit']");
 });
+
+test("if no cards remain, the game ends", async ({ page }) => {
+  await page.goto("/");
+
+  await page.route("**/api/deck/*", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        remaining: 1,
+        cards: [
+          {
+            value: "3",
+            suit: "SPADES",
+          },
+        ],
+      }),
+    });
+  });
+
+  const button = await page.getByTestId("draw-button");
+  await button.click();
+
+  await page.route("**/api/deck/*", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        remaining: 0,
+        cards: [
+          {
+            value: "5",
+            suit: "SPADES",
+          },
+        ],
+      }),
+    });
+  });
+
+  await button.click();
+
+  await page.isVisible("[data-testid='value-matches']");
+  await page.isVisible("[data-testid='suit-matches']");
+});

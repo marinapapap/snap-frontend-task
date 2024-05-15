@@ -58,8 +58,8 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
     if (remaining === 0) {
       return (
         <div>
-          <h1>VALUE MATCHES: {valueMatches}</h1>
-          <h1>VALUE MATCHES: {suitMatches}</h1>
+          <h1 data-testid="value-matches">VALUE MATCHES: {valueMatches}</h1>
+          <h1 data-testid="suit-matches">SUIT MATCHES: {suitMatches}</h1>
         </div>
       );
     } else {
