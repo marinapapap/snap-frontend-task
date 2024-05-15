@@ -1,8 +1,13 @@
 import React from "react";
-import NewDeck from "./NewDeck";
+import NewCard from "./NewCard";
 import styles from "../styles/Deck.module.css";
 
-const Deck: React.FC = () => {
+interface DeckProps {
+  deck: string;
+  remaining: number | null;
+}
+
+const Deck: React.FC<DeckProps> = ({ deck, remaining }) => {
   return (
     <div className={styles.deck}>
       <div>
@@ -11,7 +16,7 @@ const Deck: React.FC = () => {
           <br /> Card
         </div>
       </div>
-      <NewDeck />
+      <NewCard />
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/Deck.module.css";
 
-const Deck: React.FC = () => {
+const NewCard: React.FC = () => {
   return (
     <div>
       <div className={styles.placeholder}>
@@ -12,4 +12,4 @@ const Deck: React.FC = () => {
   );
 };
 
-export default Deck;
+export default NewCard;
