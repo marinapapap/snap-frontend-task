@@ -4,7 +4,6 @@ import styles from "../styles/Game.module.css";
 
 const Game: React.FC = () => {
   const [deck, setDeck] = useState<string>("");
-  const [remaining, setRemaining] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchDeck = async () => {
@@ -17,7 +16,6 @@ const Game: React.FC = () => {
         }
         const data = await res.json();
         setDeck(data.deck_id);
-        setRemaining(data.remaining);
       } catch (error) {
         console.error("Error fetching:", error);
       }
@@ -28,7 +26,7 @@ const Game: React.FC = () => {
 
   return (
     <div className={styles.game}>
-      <Deck deck={deck} remaining={remaining} />
+      <Deck deck={deck} />
     </div>
   );
 };

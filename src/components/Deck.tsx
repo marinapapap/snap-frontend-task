@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
 import NewCard from "./NewCard";
 import LastCard from "./LastCard";
+import SnapText from "./SnapText";
 import styles from "../styles/Deck.module.css";
 
 interface DeckProps {
   deck: string;
-  remaining: number | null;
 }
 
-const Deck: React.FC<DeckProps> = ({ deck, remaining }) => {
+const Deck: React.FC<DeckProps> = ({ deck }) => {
   const [value, setValue] = useState<string>("");
   const [suit, setSuit] = useState<string>("");
   const [image, setImage] = useState<string>("");
   const [lastValue, setLastValue] = useState<string>("");
   const [lastSuit, setLastSuit] = useState<string>("");
   const [lastImage, setLastImage] = useState<string>("");
+  const [valueMatches, setValueMatches] = useState<number>(0);
+  const [suitMatches, setSuitMatches] = useState<number>(0);
 
   const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setLastValue(value);
-    setLastSuit(suit);
-    setLastImage(image);
 
     try {
       const res = await fetch(
@@ -33,14 +32,33 @@ const Deck: React.FC<DeckProps> = ({ deck, remaining }) => {
       setValue(data.cards[0].value);
       setSuit(data.cards[0].suit);
       setImage(data.cards[0].image);
-      console.log(value);
+
+      if (value && lastValue && value === lastValue) {
+        setValueMatches((prev) => (prev += 1));
+      }
+
+      if (suit && lastSuit && suit === lastSuit) {
+        setSuitMatches((prev) => (prev += 1));
+      }
+
+      setLastValue(value);
+      setLastSuit(suit);
+      setLastImage(image);
     } catch (error) {
       console.error("Error fetching:", error);
     }
   };
 
+  console.log(valueMatches);
+  console.log(suitMatches);
   return (
     <div>
+      <SnapText
+        value={value}
+        suit={suit}
+        lastValue={lastValue}
+        lastSuit={lastSuit}
+      />
       <div className={styles.deck}>
         <LastCard
           lastValue={lastValue}
