@@ -10,7 +10,7 @@ const NewCard: React.FC<NewCardProps> = ({ image }) => {
   if (image) {
     return (
       <div>
-        <img data-testId="new-card" src={image}></img>
+        <img data-testid="new-card" src={image}></img>
       </div>
     );
   } else

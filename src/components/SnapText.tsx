@@ -14,30 +14,16 @@ const SnapText: React.FC<SnapTextProps> = ({
   lastValue,
   lastSuit,
 }) => {
-  //   const [valueMatches, setValueMatches] = useState<number>(0);
-  //   const [suitMatches, setSuitMathes] = useState<number>(0);
-  //   useEffect(() => {
-  //     const matches = async () => {
-  //       if (value && lastValue && lastValue === lastValue) {
-  //         setValueMatches((prev) => prev + 1);
-  //       }
-  //     };
-
-  //     matches();
-  //   }, [value, lastValue]);
-
-  //   console.log(valueMatches);
-
   return (
     <>
       {value && value === lastValue && (
-        <div>
+        <div data-testid="snap-value">
           <h1>SNAP VALUE!</h1>
         </div>
       )}
 
       {suit && suit === lastSuit && (
-        <div>
+        <div data-testid="snap-value">
           <h1>SNAP Suit!</h1>
         </div>
       )}
