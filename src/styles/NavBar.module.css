@@ -1,0 +1,18 @@
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffdd6e;
+  z-index: 1000;
+  padding: 10px;
+}
+
+.title {
+  float: left;
+  padding: 10px;
+}
+
+.navLink {
+  float: right;
+}
