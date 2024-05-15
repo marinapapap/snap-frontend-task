@@ -1,27 +1,28 @@
 import styles from "../styles/Deck.module.css";
 
-interface NewCardProps {
-  value: string;
-  suit: string;
-  image: string;
+interface LastCardProps {
+  lastValue: string;
+  lastSuit: string;
+  lastImage: string;
 }
 
-const NewCard: React.FC<NewCardProps> = ({ image }) => {
-  if (image) {
+const NewCard: React.FC<LastCardProps> = ({ lastImage }) => {
+  if (lastImage) {
     return (
       <div>
-        <img src={image}></img>
+        <img src={lastImage}></img>
       </div>
     );
-  } else
+  } else {
     return (
       <div>
         <div className={styles.placeholder}>
-          New
+          Previous
           <br /> Card
         </div>
       </div>
     );
+  }
 };
 
 export default NewCard;

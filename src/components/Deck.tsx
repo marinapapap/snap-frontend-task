@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NewCard from "./NewCard";
-import DrawCardButton from "./DrawCardButton";
+import LastCard from "./LastCard";
 import styles from "../styles/Deck.module.css";
 
 interface DeckProps {
@@ -42,12 +42,11 @@ const Deck: React.FC<DeckProps> = ({ deck, remaining }) => {
   return (
     <div>
       <div className={styles.deck}>
-        <div>
-          <div className={styles.placeholder}>
-            Previous
-            <br /> Card
-          </div>
-        </div>
+        <LastCard
+          lastValue={lastValue}
+          lastSuit={lastSuit}
+          lastImage={lastImage}
+        />
         <NewCard value={value} suit={suit} image={image} />
       </div>
       <button data-testid="draw-button" onClick={handleSubmit}>
