@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Deck.module.css";
 
-const NewCard: React.FC = () => {
-  return (
-    <div>
-      <div className={styles.placeholder}>
-        New
-        <br /> Card
+interface NewCardProps {
+  value: string;
+  suit: string;
+  image: string;
+}
+
+const NewCard: React.FC<NewCardProps> = ({ image }) => {
+  if (image) {
+    return (
+      <div>
+        <img src={image}></img>
       </div>
-    </div>
-  );
+    );
+  } else
+    return (
+      <div>
+        <div className={styles.placeholder}>
+          New
+          <br /> Card
+        </div>
+      </div>
+    );
 };
 
 export default NewCard;

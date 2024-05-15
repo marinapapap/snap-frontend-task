@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import DrawCardButton from "./DrawCardButton";
 import Deck from "./Deck";
 import styles from "../styles/Game.module.css";
 
@@ -20,7 +19,7 @@ const Game: React.FC = () => {
         setDeck(data.deck_id);
         setRemaining(data.remaining);
       } catch (error) {
-        console.error("Error fetching image:", error);
+        console.error("Error fetching:", error);
       }
     };
 
@@ -30,7 +29,6 @@ const Game: React.FC = () => {
   return (
     <div className={styles.game}>
       <Deck deck={deck} remaining={remaining} />
-      <DrawCardButton />
     </div>
   );
 };
