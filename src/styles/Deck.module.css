@@ -1,0 +1,19 @@
+.deck {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.deck > div {
+  margin: 10px;
+  font-size: 30px;
+}
+
+.placeholder {
+  width: 220px;
+  height: 310px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

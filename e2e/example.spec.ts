@@ -21,3 +21,10 @@ test("nav bar link works on about page", async ({ page }) => {
   const url = await page.url();
   await expect(url).toEqual("http://localhost:3000/");
 });
+
+test("draw card button is displayed on homepage", async ({ page }) => {
+  await page.goto("/");
+
+  const button = await page.getByTestId("draw-button");
+  await expect(button).toHaveText("Draw Card");
+});
