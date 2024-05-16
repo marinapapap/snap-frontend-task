@@ -4,7 +4,7 @@
 
 Ever been so eager to play snap that you couldn't possible wait long enough to find an opponent? Then this is the app you've been waiting for.
 
-As you draw cards from a deck of cards, the matches you accumalate will be calculated and displayed once all 52 cards have been drawn.
+As you draw cards from a deck of cards, the matches you accumulate will be calculated and displayed once all 52 cards have been drawn.
 
 Try to beat your own record!
 
@@ -14,7 +14,7 @@ Try to beat your own record!
 - Next.js
 - CSS
 - Playwright
-- [A third party Deck of Cards API](https://deckofcardsapi.com/)
+- [Deck of Cards API](https://deckofcardsapi.com/)
 
 ## Getting Started
 
