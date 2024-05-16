@@ -9,9 +9,9 @@
 
 .about {
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
-  padding: 6rem;
+  padding: 3rem;
   align-items: center;
   justify-content: center;
   text-align: center;

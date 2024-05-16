@@ -13,8 +13,10 @@ const AboutPage = () => {
         enough to find an opponent? Then this is the app you've been waiting
         for.
         <br />
+        <br />
         As you draw cards from a deck, the matches you accumalate will be
         calculated and displayed once all 52 cards have been drawn.
+        <br />
         <br />
         Try to beat your own record!
       </h2>

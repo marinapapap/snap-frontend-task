@@ -1,12 +1,22 @@
 .deck {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  justify-content: center;
 }
 
 .deck > div {
   margin: 10px;
   font-size: 30px;
+}
+
+@media (max-width: 767px) {
+  .deck {
+    flex-direction: column;
+    align-items: center;
+  }
+  .deck > div {
+    margin: 5px 0;
+  }
 }
 
 .placeholder {
