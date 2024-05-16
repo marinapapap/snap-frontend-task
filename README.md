@@ -14,7 +14,7 @@ Try to beat your own record!
 - Next.js
 - CSS
 - Playwright
-- [https://deckofcardsapi.com/](A third party Deck of Cards API)
+- [A third party Deck of Cards API](https://deckofcardsapi.com/)
 
 ## Getting Started
 
