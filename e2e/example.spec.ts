@@ -162,44 +162,50 @@ test("snap suit text will appear if there is a suit match", async ({
   expect(snapSuitText).toContain("SNAP SUIT!");
 });
 
-test("if no cards remain, the total value matches are displayed", async ({
-  page,
-}) => {
-  await page.goto("/");
+test.describe("Total matches display when no cards remain", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/");
 
-  await page.route(
-    "https://deckofcardsapi.com/api/deck/*/draw/?count=1",
-    async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify({
-          remaining: 0,
-          cards: [
-            {
-              value: "5",
-              suit: "SPADES",
-            },
-          ],
-        }),
-      });
-    }
-  );
+    await page.route(
+      "https://deckofcardsapi.com/api/deck/*/draw/?count=1",
+      async (route) => {
+        await route.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({
+            remaining: 0,
+            cards: [
+              {
+                value: "5",
+                suit: "SPADES",
+              },
+            ],
+          }),
+        });
+      }
+    );
 
-  const button = await page.getByTestId("draw-button");
-  await button.click();
+    const button = await page.getByTestId("draw-button");
+    await button.click();
 
-  await page.waitForSelector("[data-testid='value-matches']");
+    await page.waitForSelector("[data-testid='value-matches']");
+  });
 
-  const valueMatches = await page.$("[data-testid='value-matches']");
-  const valMatchesVisible = await valueMatches.isVisible();
-  expect(valMatchesVisible).toBe(true);
-  const text = await valueMatches.innerText();
-  expect(text).toContain("VALUE MATCHES: 0");
+  test("displays total value matches when no cards remain", async ({
+    page,
+  }) => {
+    const valueMatches = await page.$("[data-testid='value-matches']");
+    const valMatchesVisible = await valueMatches.isVisible();
+    expect(valMatchesVisible).toBe(true);
+    const text = await valueMatches.innerText();
+    expect(text).toContain("VALUE MATCHES: 0");
+  });
 
-  const suitMatches = await page.$("[data-testid='suit-matches']");
-  const suitMatchesVisible = await suitMatches.isVisible();
-  expect(suitMatchesVisible).toBe(true);
-  const suitText = await suitMatches.innerText();
-  expect(suitText).toContain("SUIT MATCHES: 0");
+  test("displays total suit matches when no cards remain", async ({ page }) => {
+    const suitMatches = await page.$("[data-testid='suit-matches']");
+    const suitMatchesVisible = await suitMatches.isVisible();
+    expect(suitMatchesVisible).toBe(true);
+    const suitText = await suitMatches.innerText();
+    expect(suitText).toContain("SUIT MATCHES: 0");
+  });
 });
