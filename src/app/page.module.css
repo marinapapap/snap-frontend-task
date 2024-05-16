@@ -6,3 +6,13 @@
   padding: 6rem;
   min-height: 100vh;
 }
+
+.about {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  padding: 6rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

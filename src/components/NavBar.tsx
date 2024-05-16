@@ -15,12 +15,14 @@ const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
   };
 
   return (
-    <div>
+    <div className={styles.navBar}>
       <h1 className={styles.title}>SNAP!</h1>
       <div>
-        <nav className={styles.navLink} data-testid="page-link">
-          {navLink()}
-        </nav>
+        <div className={styles.circle}>
+          <nav className={styles.navLink} data-testid="page-link">
+            {navLink()}
+          </nav>
+        </div>
       </div>
     </div>
   );

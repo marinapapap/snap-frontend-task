@@ -11,8 +11,25 @@
 .title {
   float: left;
   padding: 10px;
+  color: #ffffff;
 }
 
 .navLink {
-  float: right;
+  color: #ffdd6e;
 }
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffffff; /* Example background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  margin-right: 20px;
+}
+
+/* .link {
+  padding: 10px;
+} */
