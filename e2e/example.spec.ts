@@ -189,6 +189,8 @@ test("if no cards remain, the total value matches are displayed", async ({
   const button = await page.getByTestId("draw-button");
   await button.click();
 
+  await page.waitForSelector("[data-testid='value-matches']");
+
   const valueMatches = await page.$("[data-testid='value-matches']");
   const valMatchesVisible = await valueMatches.isVisible();
   expect(valMatchesVisible).toBe(true);
