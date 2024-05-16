@@ -16,10 +16,11 @@ const NewCard: React.FC<NewCardProps> = ({ image }) => {
   } else
     return (
       <div>
-        <div className={styles.placeholder}>
+        {/* <div className={styles.placeholder}>
           New
           <br /> Card
-        </div>
+        </div> */}
+        <img src="https://deckofcardsapi.com/static/img/back.png"></img>
       </div>
     );
 };
