@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NewCard from "./NewCard";
 import LastCard from "./LastCard";
 import SnapText from "./SnapText";
+import DrawButton from "./DrawButton";
 import styles from "../styles/Deck.module.css";
 
 interface DeckProps {
@@ -54,27 +55,6 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
     }
   };
 
-  const checkEndGame = () => {
-    if (remaining === 0) {
-      return (
-        <div>
-          <h1 data-testid="value-matches">VALUE MATCHES: {valueMatches}</h1>
-          <h1 data-testid="suit-matches">SUIT MATCHES: {suitMatches}</h1>
-        </div>
-      );
-    } else {
-      return (
-        <button
-          className={styles.draw}
-          data-testid="draw-button"
-          onClick={handleSubmit}
-        >
-          Draw Card
-        </button>
-      );
-    }
-  };
-
   return (
     <div>
       <SnapText
@@ -91,7 +71,12 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
         />
         <NewCard value={value} suit={suit} image={image} />
       </div>
-      {checkEndGame()}
+      <DrawButton
+        remaining={remaining}
+        valueMatches={valueMatches}
+        suitMatches={suitMatches}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };
