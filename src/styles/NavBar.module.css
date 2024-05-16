@@ -22,14 +22,10 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #ffffff; /* Example background color */
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   float: right;
   margin-right: 20px;
 }
-
-/* .link {
-  padding: 10px;
-} */
