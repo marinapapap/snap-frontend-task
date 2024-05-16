@@ -64,7 +64,11 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
       );
     } else {
       return (
-        <button data-testid="draw-button" onClick={handleSubmit}>
+        <button
+          className={styles.draw}
+          data-testid="draw-button"
+          onClick={handleSubmit}
+        >
           Draw Card
         </button>
       );
