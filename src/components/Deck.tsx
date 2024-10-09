@@ -7,9 +7,10 @@ import styles from "../styles/Deck.module.css";
 
 interface DeckProps {
   deck: string;
+  fetchDeck: () => void;
 }
 
-const Deck: React.FC<DeckProps> = ({ deck }) => {
+const Deck: React.FC<DeckProps> = ({ deck, fetchDeck }) => {
   const [remaining, setRemaining] = useState<number>(52);
   const [value, setValue] = useState<string>("");
   const [suit, setSuit] = useState<string>("");
@@ -55,6 +56,19 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
     }
   };
 
+  const resetDeck = async () => {
+    fetchDeck();
+    setRemaining(52);
+    setValue("");
+    setSuit("");
+    setImage("");
+    setLastValue("");
+    setLastSuit("");
+    setLastImage("");
+    setValueMatches(0);
+    setSuitMatches(0);
+  };
+
   return (
     <div>
       <SnapText
@@ -76,6 +90,7 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
         valueMatches={valueMatches}
         suitMatches={suitMatches}
         handleSubmit={handleSubmit}
+        resetDeck={resetDeck}
       />
     </div>
   );

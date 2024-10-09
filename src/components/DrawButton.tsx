@@ -6,6 +6,7 @@ interface DrawButtonProps {
   valueMatches: number;
   suitMatches: number;
   handleSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  resetDeck: () => void;
 }
 
 const DrawButton: React.FC<DrawButtonProps> = ({
@@ -13,25 +14,33 @@ const DrawButton: React.FC<DrawButtonProps> = ({
   valueMatches,
   suitMatches,
   handleSubmit,
+  resetDeck,
 }) => {
-  if (remaining === 0) {
-    return (
-      <div>
-        <h1 data-testid="value-matches">VALUE MATCHES: {valueMatches}</h1>
-        <h1 data-testid="suit-matches">SUIT MATCHES: {suitMatches}</h1>
-      </div>
-    );
-  } else {
-    return (
-      <button
-        className={styles.draw}
-        data-testid="draw-button"
-        onClick={handleSubmit}
-      >
-        Draw Card
-      </button>
-    );
-  }
+  return (
+    <div>
+      {remaining === 0 ? (
+        <div>
+          <h1 data-testid="value-matches">VALUE MATCHES: {valueMatches}</h1>
+          <h1 data-testid="suit-matches">SUIT MATCHES: {suitMatches}</h1>
+          <button
+            className={styles.draw}
+            data-testid="draw-button"
+            onClick={resetDeck}
+          >
+            Reset Deck
+          </button>
+        </div>
+      ) : (
+        <button
+          className={styles.draw}
+          data-testid="draw-button"
+          onClick={handleSubmit}
+        >
+          Draw Card
+        </button>
+      )}
+    </div>
+  );
 };
 
 export default DrawButton;
