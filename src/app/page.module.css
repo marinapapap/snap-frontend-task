@@ -1,18 +1,15 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
-}
-
 .about {
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
-  padding: 6rem;
+  padding: 200px;
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .about {
+    padding: 3rem;
+  }
 }

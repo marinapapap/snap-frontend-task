@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import styles from "../styles/Deck.module.css";
+import React from "react";
 
 interface SnapTextProps {
   value: string;
